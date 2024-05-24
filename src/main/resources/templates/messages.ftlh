@@ -14,11 +14,14 @@
     </div>
 </#list>
 
-<form action="/message/create" method="post">
+<form action="home/message/create" method="post">
     <label>
         <input type="text" name="text"/>
     </label>
     <input type="submit" value="send"/>
+</form><br>
+<form action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
 </form>
 </body>
 </html>

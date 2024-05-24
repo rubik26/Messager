@@ -7,6 +7,7 @@ import com.example.demo.repo.MessageRepo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class MessageService implements MessageServiceInterface {
@@ -24,6 +25,10 @@ public class MessageService implements MessageServiceInterface {
     public void createMessage(Message message){
         message.setTimeCreate(LocalDateTime.now());
         messageRepo.save(message);
+        if(Objects.equals(message.getText(), "")){
+            messageRepo.delete(message);
+            System.out.println("Message is empty");
+        }
     }
 
     public void deleteMessage(Message message){

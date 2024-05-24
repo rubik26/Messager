@@ -15,15 +15,15 @@ public class MessageController {
     public MessageController(MessageService messageService) {
         this.messageService = messageService;
     }
-    @GetMapping("/")
+    @GetMapping("/home")
     public String messages(Model model){
         model.addAttribute("messages", messageService.allMessages());
         return "messages";
     }
 
-    @PostMapping("/message/create")
+    @PostMapping("home/message/create")
     public String messageFromNetwork(@ModelAttribute Message message){
          messageService.createMessage(message);
-         return "redirect:/";
+         return "redirect:/home";
     }
 }
