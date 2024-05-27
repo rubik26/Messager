@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="">
 <head>
-    <title>Login</title>
+    <title>RD</title>
 </head>
 <body>
-<h2>Login</h2>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"/>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"/>
-    </div>
+<h1>Hello, it's my message</h1><hr>
+<h4>messages</h4>
+
+<#list messages as message>
+<div>
+    ${message.text}<br>
+    ${message.timeCreate} <input type="submit" value="delete"><br>
+</div>
+</#list>
+
+<form action="home/message/create" method="post">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-    <div>
-        <button type="submit">Login</button>
-    </div>
+    <label>
+        <input type="text" name="text"/>
+    </label>
+    <input type="submit" value="send"/>
+</form><br>
+<form action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
 </form>
 </body>
 </html>
