@@ -16,19 +16,11 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-
-
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
-    @Autowired
-    private final UserRepo userRepo;
-
-    public SpringSecurityConfig(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

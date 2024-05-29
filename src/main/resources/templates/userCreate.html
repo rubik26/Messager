@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>RD</title>
+</head>
+<body>
+<h1>Hello, it's my message</h1><hr>
+<h4>Create User</h4>
+
+
+<form action="home/user/create" method="post">
+    <label>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.getToken()}" />
+        <input type="text" name="username"/><br>
+        <input type="password" name="password"><br>
+    </label>
+    <input type="submit" value="send"/>
+</form><br>
+
+</body>
+</html>
