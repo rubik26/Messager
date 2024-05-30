@@ -1,23 +1,26 @@
 package com.example.demo.Service;
 
 import com.example.demo.Service.interfaces.UserServiceInterface;
+import com.example.demo.configuration.SpringSecurityConfig;
 import com.example.demo.model.User;
 import com.example.demo.repo.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService implements UserServiceInterface {
 
-    @Autowired
+
     private final UserRepo userRepository;
 
-    public UserService(UserRepo userRepository) {
+    private final SpringSecurityConfig springSecurityConfig;
+
+    public UserService(UserRepo userRepository, SpringSecurityConfig springSecurityConfig) {
         this.userRepository = userRepository;
+        this.springSecurityConfig = springSecurityConfig;
     }
     @Override
     public void createUser(User user) {
+        user.setPassword(springSecurityConfig.passwordEncoder().encode(user.getPassword()));
         userRepository.save(user);
     }
 
