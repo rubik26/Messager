@@ -74,7 +74,6 @@
             <span class="profile-info-label">Interests:</span> Traveling, Photography, Cooking
         </div>
     </div>
-    <!-- Дополнительная информация о профиле пользователя может быть добавлена здесь -->
 </div>
 </body>
 </html>
